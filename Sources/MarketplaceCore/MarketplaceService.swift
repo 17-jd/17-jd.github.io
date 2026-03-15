@@ -139,11 +139,11 @@ public actor MarketplaceService {
         request.status = .completed
         try await repository.update(request)
 
-        guard var engineer = engineersByID[engineID] else {
+        guard var engineer = engineersByID[engineerID] else {
             throw MarketplaceError.engineerNotFound
         }
         engineer.isAvailable = true
-        engineersByID[engineID] = engineer
+        engineersByID[engineerID] = engineer
         return request
     }
 
